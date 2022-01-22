@@ -84,10 +84,15 @@ jobs:
       - name: Publish package
         run: dotnet nuget push nupkg/**/*.nupkg --api-key  ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json  --skip-duplicate
       
-      - name: Merge code to master
+      - name: Perform merge
         run: |
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+          git status
+          git checkout "$DEFAULT_BRANCH"
+          git status
           git checkout origin/master
-          git merge development
-          git commit -am "Auto-Commit"
+          git merge "$DEFAULT_BRANCH" --no-edit
           git push
+          git status
 
