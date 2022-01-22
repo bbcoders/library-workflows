@@ -86,8 +86,8 @@ jobs:
       
       - name: Merge code to master
         run: |
-          git merge -s ours master
-          git checkout master
+          git merge -s ours origin/master
+          git checkout origin/master
           git merge development
           git push
 
