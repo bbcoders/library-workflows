@@ -1,4 +1,4 @@
-name: Publish common libraries
+name: library-commons
 
 on: 
   workflow_dispatch:
