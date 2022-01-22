@@ -55,7 +55,7 @@ jobs:
 
   deploy:
     name: publish
-    environment: library-commons-build
+    environment: library-commons-publish
     runs-on: ubuntu-latest
     needs: build
     steps:
