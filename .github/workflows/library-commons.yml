@@ -24,6 +24,7 @@ jobs:
 
       - name: Set up MySQL
         run: |
+          echo "$DEFAULT_BRANCH"
           sudo /etc/init.d/mysql start
           mysql -e 'CREATE DATABASE querymanagement' -uroot -proot
       
@@ -86,6 +87,7 @@ jobs:
       
       - name: Perform merge
         run: |
+          echo "$DEFAULT_BRANCH"
           git config --global user.email "${GITHUB_ACTOR}"
           git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
           git status
@@ -93,6 +95,7 @@ jobs:
           git status
           git checkout origin/master
           git merge "$DEFAULT_BRANCH" --no-edit
+          git commit -am "Auto Merge"
           git push
           git status
 
