@@ -55,7 +55,6 @@ jobs:
 
   deploy:
     name: publish
-    if: github.event_name == 'push'
     environment: library-commons-build
     runs-on: ubuntu-latest
     needs: build
